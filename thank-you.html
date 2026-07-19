@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Booked — Grey Matter Studio</title>
+  <meta name="description" content="Your YouTube Authority strategy call is booked. Here's what happens next.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.greymatterstudio.co.uk/thank-you.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { black: '#0a0a0a' } } } };
+  </script>
+  <style>
+    :root {
+      --color-black: #0a0a0a;
+      --color-white: #fff;
+      --color-dark: #0a0a0a;
+      --color-gray: #404040;
+      --color-light-gray: #e5e5e5;
+      --color-lighter-gray: #fafafa;
+      --color-medium-gray: #737373;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #0a0a0a;
+      background: #fff;
+    }
+    .gradient-multi {
+      background: linear-gradient(90deg, #4F46E5, #7C3AED, #DB2777, #F59E0B, #10B981);
+    }
+    .gradient-text-rainbow {
+      background: linear-gradient(90deg, #4F46E5, #7C3AED, #DB2777, #F59E0B, #10B981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-light-subtle {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+    }
+    .text-muted { color: #737373; }
+    .nav-link { color: #404040; font-size: 13px; }
+    .nav-link:hover { color: #0a0a0a; }
+    .section-pad { padding: 80px 0; }
+    @media (max-width: 767px) {
+      .section-pad { padding: 48px 0; }
+    }
+    /* Placeholder video card (swap for real thumbnails/embeds later) */
+    .vid-placeholder {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: linear-gradient(135deg, #0a0a0a 0%, #262626 100%);
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .vid-placeholder .play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 64px; height: 64px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .vid-placeholder:hover .play-btn { background: rgba(255,255,255,0.22); transform: translate(-50%,-50%) scale(1.08); }
+  </style>
+</head>
+<body>
+
+<!-- =========== NAVIGATION =========== -->
+<nav class="sticky top-0 z-50 bg-white border-b border-[#e5e5e5]">
+  <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-14">
+    <div class="flex items-center gap-8">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <img src="Our%20branding/Grey%20Matter%20Logo.png" alt="Grey Matter Studio" class="h-7 w-7 object-contain">
+        <span class="font-bold text-sm tracking-tight text-black">Grey Matter Studio</span>
+      </a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="text-sm text-[#404040] hover:text-black">Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =========== CONFIRMATION HERO =========== -->
+<section class="bg-white pt-16 pb-4">
+  <div class="max-w-2xl mx-auto px-6 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-black mb-5">
+      You're Booked. Here's What to Do <span class="gradient-text-rainbow">Next</span>.
+    </h1>
+    <p class="text-lg text-[#737373] max-w-lg mx-auto mb-8" id="call-detail-text">
+      Check your email for your exact call time — then add it to your calendar below.
+    </p>
+    <!-- Call details box: reads invitee_full_name / event_start_time / event_end_time / event_type_name
+         from the URL query string, which Calendly appends automatically when "pass event details to
+         redirect URL" is enabled on the event type's confirmation page settings. Google Meet link itself
+         still arrives via Calendly's own confirmation email/invite — Calendly doesn't expose it in the
+         redirect, so it isn't shown here. -->
+    <div class="bg-[#fafafa] border border-[#e5e5e5] rounded-2xl p-6 max-w-sm mx-auto">
+      <div class="text-xs text-[#737373] uppercase tracking-widest mb-3">Add to Calendar</div>
+      <div class="flex flex-col gap-2">
+        <a id="add-gcal" href="#" target="_blank" class="flex items-center justify-center gap-2 bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#262626]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Google Calendar
+        </a>
+        <a id="add-ics" href="#" download="grey-matter-studio-call.ics" class="flex items-center justify-center gap-2 bg-white border border-[#e5e5e5] text-black px-5 py-2.5 rounded-full text-sm font-medium hover:bg-[#f0f0f0]">
+          Outlook / Apple Calendar (.ics)
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var start = params.get('event_start_time');
+  var end = params.get('event_end_time');
+  var name = params.get('invitee_full_name');
+  var eventName = params.get('event_type_name') || 'Strategy Call';
+  var tz = params.get('timeZone') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  var detailEl = document.getElementById('call-detail-text');
+  if (start) {
+    var d = new Date(start);
+    var formatted = d.toLocaleString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: tz });
+    var greeting = name ? name.split(' ')[0] + ', your' : 'Your';
+    detailEl.textContent = greeting + ' call is booked for ' + formatted + '. Your Google Meet link is in the confirmation email.';
+  }
+
+  var gcalBtn = document.getElementById('add-gcal');
+  var icsBtn = document.getElementById('add-ics');
+
+  if (start && end) {
+    var toGCalDate = function(iso) { return iso.replace(/[-:]/g, '').split('.')[0] + 'Z'; };
+    var s = toGCalDate(start), e = toGCalDate(end);
+    var title = encodeURIComponent(eventName + ' — Grey Matter Studio');
+    var details = encodeURIComponent('Your strategy call with Grey Matter Studio. Google Meet link is in your confirmation email.');
+    gcalBtn.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + s + '/' + e + '&details=' + details;
+
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
+      'DTSTART:' + s, 'DTEND:' + e,
+      'SUMMARY:' + eventName + ' — Grey Matter Studio',
+      'DESCRIPTION:Your strategy call with Grey Matter Studio. Google Meet link is in your confirmation email.',
+      'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    icsBtn.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics);
+  } else {
+    gcalBtn.classList.add('opacity-50', 'pointer-events-none');
+    icsBtn.classList.add('opacity-50', 'pointer-events-none');
+  }
+})();
+</script>
+
+<!-- =========== QUICK ANSWERS BEFORE YOUR CALL =========== -->
+<section class="bg-white section-pad">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <div class="text-xs text-[#737373] uppercase tracking-widest mb-3">Before Your Call</div>
+      <h2 class="text-2xl md:text-4xl font-bold leading-tight mb-4">Quick Answers Before Your Call</h2>
+      <p class="text-[#737373] max-w-lg mx-auto text-sm md:text-base">Short videos answering the questions we hear most often — so you come prepared and confident.</p>
+    </div>
+    <!-- Placeholder grid: swap each vid-placeholder for a real video embed per question -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What can I expect on my call?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What makes Grey Matter Studio different?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"Will this work for my specific niche?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"Is now the right time for me to do this?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"Who is this for — and not for?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"How much time will this take?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What's the schedule once I sign up?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What if it still doesn't work?"</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== TESTIMONIALS =========== -->
+<section class="bg-[#fafafa] border-t border-[#e5e5e5] section-pad">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <div class="text-xs text-[#737373] uppercase tracking-widest mb-3">Client Results</div>
+      <h2 class="text-2xl md:text-4xl font-bold leading-tight">What Our Clients Have to Say</h2>
+    </div>
+    <!-- Placeholder cards: swap in real client quotes/photos -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="bg-white border border-[#e5e5e5] rounded-2xl p-6">
+        <div class="flex gap-1 mb-4 text-yellow-400">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+        </div>
+        <p class="text-sm text-[#404040] leading-relaxed mb-5">"[Client testimonial placeholder — swap in a real quote about results from the YouTube Authority System.]"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-[#e5e5e5]"></div>
+          <div>
+            <div class="text-sm font-semibold text-black">Client Name</div>
+            <div class="text-xs text-[#737373]">Role / Business</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-[#e5e5e5] rounded-2xl p-6">
+        <div class="flex gap-1 mb-4 text-yellow-400">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+        </div>
+        <p class="text-sm text-[#404040] leading-relaxed mb-5">"[Client testimonial placeholder — swap in a real quote about results from the YouTube Authority System.]"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-[#e5e5e5]"></div>
+          <div>
+            <div class="text-sm font-semibold text-black">Client Name</div>
+            <div class="text-xs text-[#737373]">Role / Business</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white border border-[#e5e5e5] rounded-2xl p-6">
+        <div class="flex gap-1 mb-4 text-yellow-400">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+        </div>
+        <p class="text-sm text-[#404040] leading-relaxed mb-5">"[Client testimonial placeholder — swap in a real quote about results from the YouTube Authority System.]"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-[#e5e5e5]"></div>
+          <div>
+            <div class="text-sm font-semibold text-black">Client Name</div>
+            <div class="text-xs text-[#737373]">Role / Business</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========== FOOTER =========== -->
+<footer class="bg-[#0a0a0a] border-t border-[#ffffff1a] py-10">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex items-center gap-2 mb-4">
+      <img src="Our%20branding/Grey%20Matter%20Logo.png" alt="Grey Matter Studio" class="h-6 w-6 object-contain">
+      <div class="font-bold text-white text-sm">Grey Matter Studio</div>
+    </div>
+    <div class="border-t border-[#ffffff1a] pt-6 flex items-center justify-between flex-wrap gap-4">
+      <span class="text-[#737373] text-xs">© 2026 Grey Matter Studio. All rights reserved.</span>
+      <div class="flex gap-4">
+        <a href="https://www.youtube.com/@jackrobertsbiz" target="_blank" class="text-[#737373] text-xs hover:text-white">YouTube</a>
+        <a href="https://www.instagram.com/jackrobertsbiz/" target="_blank" class="text-[#737373] text-xs hover:text-white">Instagram</a>
+        <a href="https://uk.linkedin.com/in/jack-robertsbiz" target="_blank" class="text-[#737373] text-xs hover:text-white">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
