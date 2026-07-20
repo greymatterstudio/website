@@ -154,6 +154,108 @@
   </div>
 </section>
 
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var start = params.get('event_start_time');
+  var end = params.get('event_end_time');
+  var name = params.get('invitee_full_name');
+  var eventName = params.get('event_type_name') || 'Strategy Call';
+  var tz = params.get('timeZone') || Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  var detailEl = document.getElementById('call-detail-text');
+  if (start) {
+    var d = new Date(start);
+    var formatted = d.toLocaleString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: tz });
+    var greeting = name ? name.split(' ')[0] + ', your' : 'Your';
+    detailEl.textContent = greeting + ' call is booked for ' + formatted + '. Your Google Meet link is in the confirmation email.';
+  }
+
+  var gcalBtn = document.getElementById('add-gcal');
+  var icsBtn = document.getElementById('add-ics');
+
+  if (start && end) {
+    var toGCalDate = function(iso) { return iso.replace(/[-:]/g, '').split('.')[0] + 'Z'; };
+    var s = toGCalDate(start), e = toGCalDate(end);
+    var title = encodeURIComponent(eventName + ' — Grey Matter Studio');
+    var details = encodeURIComponent('Your strategy call with Grey Matter Studio. Google Meet link is in your confirmation email.');
+    gcalBtn.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + s + '/' + e + '&details=' + details;
+
+    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
+      'DTSTART:' + s, 'DTEND:' + e,
+      'SUMMARY:' + eventName + ' — Grey Matter Studio',
+      'DESCRIPTION:Your strategy call with Grey Matter Studio. Google Meet link is in your confirmation email.',
+      'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    icsBtn.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics);
+  } else {
+    gcalBtn.classList.add('opacity-50', 'pointer-events-none');
+    icsBtn.classList.add('opacity-50', 'pointer-events-none');
+  }
+})();
+</script>
+
+<!-- =========== QUICK ANSWERS BEFORE YOUR CALL =========== -->
+<section class="bg-white section-pad">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <div class="text-xs text-[#737373] uppercase tracking-widest mb-3">Before Your Call</div>
+      <h2 class="text-2xl md:text-4xl font-bold leading-tight mb-4">Quick Answers Before Your Call</h2>
+      <p class="text-[#737373] max-w-lg mx-auto text-sm md:text-base">Short videos answering the questions we hear most often — so you come prepared and confident.</p>
+    </div>
+    <!-- Placeholder grid: swap each vid-placeholder for a real video embed per question -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What can I expect on my call?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What makes Grey Matter Studio different?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"Will this work for my specific niche?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"Is now the right time for me to do this?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"Who is this for — and not for?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"How much time will this take?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What's the schedule once I sign up?"</h3>
+      </div>
+      <div>
+        <div class="vid-placeholder">
+          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>
+        <h3 class="text-base font-semibold text-black mt-4">"What if it still doesn't work?"</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- =========== CASE STUDIES =========== -->
 <section class="bg-white section-pad">
   <div class="max-w-5xl mx-auto px-6">
@@ -253,108 +355,6 @@
             <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-[#7C3AED] flex-shrink-0 mt-1.5"></span>One free course video brought in $15K in revenue from 7 booked calls</li>
           </ul>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-(function() {
-  var params = new URLSearchParams(window.location.search);
-  var start = params.get('event_start_time');
-  var end = params.get('event_end_time');
-  var name = params.get('invitee_full_name');
-  var eventName = params.get('event_type_name') || 'Strategy Call';
-  var tz = params.get('timeZone') || Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-  var detailEl = document.getElementById('call-detail-text');
-  if (start) {
-    var d = new Date(start);
-    var formatted = d.toLocaleString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: tz });
-    var greeting = name ? name.split(' ')[0] + ', your' : 'Your';
-    detailEl.textContent = greeting + ' call is booked for ' + formatted + '. Your Google Meet link is in the confirmation email.';
-  }
-
-  var gcalBtn = document.getElementById('add-gcal');
-  var icsBtn = document.getElementById('add-ics');
-
-  if (start && end) {
-    var toGCalDate = function(iso) { return iso.replace(/[-:]/g, '').split('.')[0] + 'Z'; };
-    var s = toGCalDate(start), e = toGCalDate(end);
-    var title = encodeURIComponent(eventName + ' — Grey Matter Studio');
-    var details = encodeURIComponent('Your strategy call with Grey Matter Studio. Google Meet link is in your confirmation email.');
-    gcalBtn.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + s + '/' + e + '&details=' + details;
-
-    var ics = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'BEGIN:VEVENT',
-      'DTSTART:' + s, 'DTEND:' + e,
-      'SUMMARY:' + eventName + ' — Grey Matter Studio',
-      'DESCRIPTION:Your strategy call with Grey Matter Studio. Google Meet link is in your confirmation email.',
-      'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
-    icsBtn.href = 'data:text/calendar;charset=utf8,' + encodeURIComponent(ics);
-  } else {
-    gcalBtn.classList.add('opacity-50', 'pointer-events-none');
-    icsBtn.classList.add('opacity-50', 'pointer-events-none');
-  }
-})();
-</script>
-
-<!-- =========== QUICK ANSWERS BEFORE YOUR CALL =========== -->
-<section class="bg-white section-pad">
-  <div class="max-w-5xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <div class="text-xs text-[#737373] uppercase tracking-widest mb-3">Before Your Call</div>
-      <h2 class="text-2xl md:text-4xl font-bold leading-tight mb-4">Quick Answers Before Your Call</h2>
-      <p class="text-[#737373] max-w-lg mx-auto text-sm md:text-base">Short videos answering the questions we hear most often — so you come prepared and confident.</p>
-    </div>
-    <!-- Placeholder grid: swap each vid-placeholder for a real video embed per question -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"What can I expect on my call?"</h3>
-      </div>
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"What makes Grey Matter Studio different?"</h3>
-      </div>
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"Will this work for my specific niche?"</h3>
-      </div>
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"Is now the right time for me to do this?"</h3>
-      </div>
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"Who is this for — and not for?"</h3>
-      </div>
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"How much time will this take?"</h3>
-      </div>
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"What's the schedule once I sign up?"</h3>
-      </div>
-      <div>
-        <div class="vid-placeholder">
-          <div class="play-btn"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg></div>
-        </div>
-        <h3 class="text-base font-semibold text-black mt-4">"What if it still doesn't work?"</h3>
       </div>
     </div>
   </div>
