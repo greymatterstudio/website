@@ -151,7 +151,6 @@
         </a>
       </div>
     </div>
-    <p class="text-sm text-[#737373] max-w-sm mx-auto mt-4">Can't make it any more? <a id="reschedule-link" href="#" target="_blank" class="text-[#7C3AED] hover:underline">Reschedule here</a> rather than leaving it. Takes ten seconds and we'd rather move it than miss you.</p>
   </div>
 </section>
 
@@ -174,13 +173,6 @@
 
   var gcalBtn = document.getElementById('add-gcal');
   var icsBtn = document.getElementById('add-ics');
-  var rescheduleLink = document.getElementById('reschedule-link');
-  var rescheduleUrl = params.get('reschedule_url');
-  if (rescheduleUrl) {
-    rescheduleLink.href = rescheduleUrl;
-  } else {
-    rescheduleLink.classList.add('opacity-50', 'pointer-events-none');
-  }
 
   if (start && end) {
     var toGCalDate = function(iso) { return iso.replace(/[-:]/g, '').split('.')[0] + 'Z'; };
@@ -201,15 +193,6 @@
   }
 })();
 </script>
-
-<!-- =========== TWO THINGS TO BRING =========== -->
-<section class="bg-[#fafafa] border-t border-[#e5e5e5] section-pad" style="padding-top:48px; padding-bottom:48px;">
-  <div class="max-w-lg mx-auto px-6 text-center">
-    <h2 class="text-xl md:text-2xl font-bold leading-tight mb-4">Two things to bring</h2>
-    <p class="text-[#737373] text-sm md:text-base leading-relaxed">Have a think about what people ask you before they buy. The objections you hear over and over, the ones that cost you deals. That is what the call hangs on and it is the one thing I cannot work out by looking at your channel.</p>
-    <p class="text-[#737373] text-sm md:text-base leading-relaxed mt-4">If you record your sales calls, having a few to hand helps. Not essential.</p>
-  </div>
-</section>
 
 <!-- =========== QUICK ANSWERS BEFORE YOUR CALL =========== -->
 <section class="bg-white section-pad">
